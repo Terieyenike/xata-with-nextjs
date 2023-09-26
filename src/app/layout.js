@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-      <header className="w-full py-8 z-10 padding-x absolute">
+      <header className="w-full py-8 z-10 sm:px-16 px-8">
       <nav className="flex justify-between items-center max-container">
          <a href='/'>
           <Image src={headerLogo} alt='logo'  className="md:w-[130px] md:h-[29px] w-[70px]" />
@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
             <li key={link.label}>
               <a
                 href={link.href}
-                className='text-lg bg-primary px-7 py-4 text-slate-900 border leading-none rounded-md shadow-3xl'>
+                className='font-montserrat text-lg bg-primary px-7 py-4 text-slate-900 border leading-none rounded-md shadow-3xl'>
                 {link.label}
               </a>
             </li>
