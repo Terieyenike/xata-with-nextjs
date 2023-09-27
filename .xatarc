@@ -1,7 +1,0 @@
-{
-  "databaseURL": "https://Teri-Eyenike-s-workspace-14frfm.eu-central-1.xata.sh/db/waitlist",
-  "codegen": {
-    "output": "src/xata.js",
-    "moduleType": "esm"
-  }
-}
