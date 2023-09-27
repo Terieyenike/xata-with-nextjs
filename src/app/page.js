@@ -21,8 +21,8 @@ export default function Home() {
           your active life.
         </p>
 
-        <div className="w-full flex items-center max-sm:flex-col gap-5 p-2.5 sm:border sm:border-slate-gray rounded-full">
-          <input type="text" placeholder="Enter your email address" className="input" />
+        <div className="w-full flex items-center max-sm:flex-col gap-5 p-2.5 sm:border sm:border-slate-gray rounded-full" id="joinwaitlist">
+          <input type="text" placeholder="Enter your email address" className="input"  />
           <div className="flex max-sm:justify-end items-center max-sm:w-full"><button className="w-full bg-coral-red rounded-full text-white border-coral-red px-7 py-4">Join waitlist</button></div>
         </div>
       </div>
