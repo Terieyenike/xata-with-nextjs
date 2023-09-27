@@ -1,7 +1,40 @@
+"use client"
+import { useState } from "react"
+
 import Image from "next/image"
 import { bigShoe1 } from "@/assets/images"
 
 export default function Home() {
+  const [email, setEmail] = useState('')
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const resetFormField = () => {
+    setEmail('')
+  }
+
+   const submit = () => {
+    fetch('/api/post-info', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email
+      }),
+    }).then(() => console.log('succesful'))
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    submit()
+    setIsSubmitted(true)
+    resetFormField()
+  }
+
+  const handleChange = (e) => {
+    setEmail(e.target.value)
+  }
+
   return (
     <main>
       <section className="w-full py-8 z-10 sm:px-16 px-8 flex xl:flex-row flex-col justify-center gap-10">
@@ -19,10 +52,18 @@ export default function Home() {
           your active life.
         </p>
 
-        <div className="w-full flex items-center max-sm:flex-col gap-5 p-2.5 sm:border sm:border-slate-gray rounded-full">
-          <input type="text" placeholder="Enter your email address" className="input" />
-          <div className="flex max-sm:justify-end items-center max-sm:w-full"><button className="w-full bg-coral-red rounded-full text-white border-coral-red px-7 py-4">Join waitlist</button></div>
-        </div>
+        {isSubmitted ? (
+          <div>
+            <p className="font-bold text-2xl">Well received! We will keep you updated.</p>
+          </div>) : (
+          <form className="w-full flex items-center max-sm:flex-col gap-5 p-2.5 sm:border sm:border-slate-gray rounded-full" onSubmit={handleSubmit}>
+
+          <input type="email" name="email" id="email" placeholder="Enter your email address" className="input" value={email} onChange={handleChange} />
+
+            <div className="flex max-sm:justify-end items-center max-sm:w-full"><button className="w-full bg-coral-red rounded-full text-white border-coral-red px-7 py-4" type="submit">Join waitlist</button></div>
+
+          </form>
+        )}
       </div>
       <div className='flex-1 flex justify-center items-center bg-center bg-cover'>
         <Image

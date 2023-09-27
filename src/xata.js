@@ -4,7 +4,7 @@ import { buildClient } from "@xata.io/client";
 /** @type { SchemaTables } */
 const tables = [
   {
-    name: "info",
+    name: "details",
     columns: [
       { name: "email", type: "email", defaultValue: "name@example.com" },
     ],
