@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer"
 import Image from "next/image"
 import { bigShoe1 } from "@/assets/images"
+import Services from "@/components/Services"
 
 export default function Home() {
   return (
@@ -36,7 +37,10 @@ export default function Home() {
 
       </div>
       </section>
+      <section className="sm:px-16 px-8 sm:py-24 py-12">
+        <Services />
+      </section>
       <Footer />
-    </main>
+      </main>
   )
 }
