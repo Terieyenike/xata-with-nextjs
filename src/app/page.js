@@ -1,8 +1,10 @@
 "use client"
 import { useState } from "react"
 
+import Footer from "@/components/Footer"
 import Image from "next/image"
 import { bigShoe1 } from "@/assets/images"
+import Services from "@/components/Services"
 
 export default function Home() {
   const [email, setEmail] = useState('')
@@ -51,7 +53,7 @@ export default function Home() {
 
   return (
     <main>
-      <section className="w-full py-8 z-10 sm:px-16 px-8 flex xl:flex-row flex-col justify-center gap-10">
+      <section className="w-full flex xl:flex-row flex-col justify-center gap-10 py-8 z-10 sm:px-16 px-8">
       <div className="xl:w-2/5 flex flex-col justify-center items-start w-full">
         <p className="text-xl font-montserrat text-coral-red">Our summer collection</p>
         <h1 className='mt-10 font-palanquin text-8xl max-sm:text-[72px] font-bold'>
@@ -94,6 +96,10 @@ export default function Home() {
 
       </div>
       </section>
-    </main>
+      <section className="sm:px-16 px-8 sm:py-24 py-12">
+        <Services />
+      </section>
+      <Footer />
+      </main>
   )
 }
