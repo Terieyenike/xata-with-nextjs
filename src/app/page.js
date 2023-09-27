@@ -68,22 +68,10 @@ export default function Home() {
           your active life.
         </p>
 
-        {isSubmitted ? (
-          <div>
-            <p className="font-bold text-2xl">Well received! We will keep you updated.</p>
-          </div>) : (
-          <form className="w-full flex items-center max-sm:flex-col gap-5 p-2.5 sm:border sm:border-slate-gray rounded-full" onSubmit={handleSubmit}>
-
-          <input type="email" name="email" id="email" placeholder="Enter your email address" className="input" value={email} onChange={handleChange} />
-
-            <div className="flex max-sm:justify-end items-center max-sm:w-full">
-
-            <button className={`w-full bg-coral-red rounded-full text-white border-coral-red px-7 py-4`} type="submit">Join waitlist</button>
-            </div>
-
-          </form>
-        )}
-        {error && <p className="text-rose-700 mt-5 ml-3">{error}</p>}
+        <div className="w-full flex items-center max-sm:flex-col gap-5 p-2.5 sm:border sm:border-slate-gray rounded-full" id="joinwaitlist">
+          <input type="text" placeholder="Enter your email address" className="input"  />
+          <div className="flex max-sm:justify-end items-center max-sm:w-full"><button className="w-full bg-coral-red rounded-full text-white border-coral-red px-7 py-4">Join waitlist</button></div>
+        </div>
       </div>
       <div className='flex-1 flex justify-center items-center bg-center bg-cover'>
         <Image
