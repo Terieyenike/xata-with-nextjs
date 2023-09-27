@@ -7,6 +7,7 @@ import { bigShoe1 } from "@/assets/images"
 export default function Home() {
   const [email, setEmail] = useState('')
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState(null)
 
   const resetFormField = () => {
     setEmail('')
@@ -26,12 +27,25 @@ export default function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    if (!email) {
+      setError('Email is invalid')
+      return
+    }
     submit()
-    setIsSubmitted(true)
     resetFormField()
+    setIsSubmitted(true)
+  }
+
+  const isValidEmail = (email) => {
+    return /\S+@\S+\.\S+/.test(email);
   }
 
   const handleChange = (e) => {
+    if (!isValidEmail(e.target.value)) {
+      setError('Email is invalid');
+    } else {
+      setError(null)
+    }
     setEmail(e.target.value)
   }
 
@@ -60,10 +74,14 @@ export default function Home() {
 
           <input type="email" name="email" id="email" placeholder="Enter your email address" className="input" value={email} onChange={handleChange} />
 
-            <div className="flex max-sm:justify-end items-center max-sm:w-full"><button className="w-full bg-coral-red rounded-full text-white border-coral-red px-7 py-4" type="submit">Join waitlist</button></div>
+            <div className="flex max-sm:justify-end items-center max-sm:w-full">
+
+            <button className={`w-full bg-coral-red rounded-full text-white border-coral-red px-7 py-4`} type="submit">Join waitlist</button>
+            </div>
 
           </form>
         )}
+        {error && <p className="text-rose-700 mt-5 ml-3">{error}</p>}
       </div>
       <div className='flex-1 flex justify-center items-center bg-center bg-cover'>
         <Image
