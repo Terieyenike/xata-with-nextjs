@@ -1,10 +1,10 @@
 "use client"
 import { useState } from "react"
-
 import Footer from "@/components/Footer"
+import Services from "@/components/Services"
+
 import Image from "next/image"
 import { bigShoe1 } from "@/assets/images"
-import Services from "@/components/Services"
 
 export default function Home() {
   const [email, setEmail] = useState('')
@@ -24,7 +24,7 @@ export default function Home() {
       body: JSON.stringify({
         email
       }),
-    }).then(() => console.log('succesful'))
+    })
   };
 
   const handleSubmit = (e) => {
@@ -53,7 +53,7 @@ export default function Home() {
 
   return (
     <main>
-      <section className="w-full flex xl:flex-row flex-col justify-center gap-10 py-8 z-10 sm:px-16 px-8">
+      <section className="w-full py-8 z-10 sm:px-16 px-8 flex xl:flex-row flex-col justify-center gap-10">
       <div className="xl:w-2/5 flex flex-col justify-center items-start w-full">
         <p className="text-xl font-montserrat text-coral-red">Our summer collection</p>
         <h1 className='mt-10 font-palanquin text-8xl max-sm:text-[72px] font-bold'>
@@ -68,10 +68,22 @@ export default function Home() {
           your active life.
         </p>
 
-        <div className="w-full flex items-center max-sm:flex-col gap-5 p-2.5 sm:border sm:border-slate-gray rounded-full" id="joinwaitlist">
-          <input type="text" placeholder="Enter your email address" className="input"  />
-          <div className="flex max-sm:justify-end items-center max-sm:w-full"><button className="w-full bg-coral-red rounded-full text-white border-coral-red px-7 py-4">Join waitlist</button></div>
-        </div>
+        {isSubmitted ? (
+          <div>
+            <p className="font-bold text-2xl">Well received! We will keep you updated.</p>
+          </div>) : (
+          <form className="w-full flex items-center max-sm:flex-col gap-5 p-2.5 sm:border sm:border-slate-gray rounded-full" onSubmit={handleSubmit} id="joinwaitlist">
+
+          <input type="email" name="email" id="email" placeholder="Enter your email address" className="input" value={email} onChange={handleChange} />
+
+            <div className="flex max-sm:justify-end items-center max-sm:w-full">
+
+            <button className="w-full bg-coral-red rounded-full text-white border-coral-red px-7 py-4" type="submit">Join waitlist</button>
+            </div>
+
+          </form>
+        )}
+        {error && <p className="text-rose-700 mt-5 ml-3">{error}</p>}
       </div>
       <div className='flex-1 flex justify-center items-center bg-center bg-cover'>
         <Image
@@ -88,6 +100,6 @@ export default function Home() {
         <Services />
       </section>
       <Footer />
-      </main>
+    </main>
   )
 }
