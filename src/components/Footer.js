@@ -5,7 +5,7 @@ import { footerLinks, socialMedia } from "@/constants";
 
 import Image from "next/image";
 
-// padding padding-x pb-8 padding-t
+
 
 const Footer = () => {
   return (
